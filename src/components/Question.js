@@ -12,7 +12,6 @@ export default class Question extends Component {
         if(this.props.question["question_type"] === 'mcq')
         {
             question = <MCQ question={this.props.question}
-                                question_index={this.props.question_index}
                                 setAnswer={this.props.setAnswer}
             />
         }

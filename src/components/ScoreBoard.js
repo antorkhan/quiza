@@ -3,7 +3,17 @@ import ReactDOM from 'react-dom';
 
 export default class ScoreBoard extends Component {
     state = {
-        correct_answers: ['27.63', '1/8', '10a+3', '300 inches', '10.00'],
+        correct_answers: ['16',
+            '24',
+            'Twenty-one million, three hundred forty-three thousand, eight hundred forty five',
+            'three',
+            '6',
+            '93,500',
+            '7',
+            '-20',
+            '6',
+            '120',
+        ],
         total_score: 0,
     };
 
