@@ -1,23 +1,29 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import MCQ from "./questions/MCQ";
+import Blank from "./questions/Blank";
 
 export default class Question extends Component {
 
     render() {
-        return (
+        let question;
+        if(this.props.question["question_type"] === 'mcq')
+        {
+            question = <MCQ question={this.props.question}
+                                question_index={this.props.question_index}
+                                setAnswer={this.props.setAnswer}
+            />
+        }
+        else if(this.props.question["question_type"] === 'blank')
+        {
+            question = <Blank question={this.props.question}
+                            question_index={this.props.question_index}
+                            setAnswer={this.props.setAnswer}
+            />
+        }
+            return (
            <React.Fragment>
-               <div><h3>{this.props.question.question_text}</h3></div>
-               <div>
-                   {this.props.question.options.map((value,index)=>{
-                       return <div key={index}>
-                           <h4><input type="radio"
-                                      value={value}
-                                      name="options"
-                                      checked={this.props.question.answer === value}
-                                      onChange={(event)=> this.props.setAnswer(value)}/> {value}</h4>
-                       </div>
-                   })}
-               </div>
+               { question }
            </React.Fragment>
         );
     }

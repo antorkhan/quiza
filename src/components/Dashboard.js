@@ -12,31 +12,36 @@ export default class Dashboard extends Component {
                 question_text: 'The shirt you want to buy is 15% off from $32.50. How much will your shirt be?',
                 options: ['27.63', '30.00', '17.50', '37.38'],
                 answer: '',
-                serial: 0
+                serial: 0,
+                question_type: 'mcq'
             },
             {
                 question_text: 'Solve: 5/8 – 1 /2',
                 options: ['1/4', '1/8', '1/2', '10/16'],
                 answer: '',
-                serial: 1
+                serial: 1,
+                question_type: 'mcq'
             },
             {
                 question_text: 'Simplify and combine like terms of the following expression: 3(2a+1) + 4a',
                 options: ['2a+1+12a', '6a+3+4a', '10a+3', '7a+8a2'],
                 answer: '',
-                serial: 2
+                serial: 2,
+                question_type: 'mcq'
             },
             {
                 question_text: 'Calculate the surface area of sphere with a radius of 5 inches. (4πr2)',
                 options: ['341 inches', '314 inches', '25 inches', '300 inches'],
                 answer: '',
-                serial: 3
+                serial: 3,
+                question_type: 'mcq'
             },
             {
                 question_text: 'Jack has twelve dollars in his pocket on Monday, three dollars on Tuesday, ten dollars on Wednesday, eight dollars on Thursday, and two dollars on Friday. What is the average amount of money Jack has in his pocket during the week?',
                 options: ['10.00', '35.00', '8.00', '7.00'],
                 answer: '',
-                serial: 4
+                serial: 4,
+                question_type: 'blank'
             }
         ],
         is_finished: true,
@@ -76,7 +81,7 @@ export default class Dashboard extends Component {
 
     render() {
         return (
-            <div className={''}>
+            <div className={'container-fluid'}>
                 {(!this.state.is_finished) ? <ScoreBoard questions = {this.state.questions}/> :
                     <Question question={this.state.questions[this.state.current_question]}
                               question_index={this.state.current_question}
