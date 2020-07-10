@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import './Question.css'
 import MCQ from "./questions/MCQ";
 import Blank from "./questions/Blank";
 
@@ -7,6 +8,7 @@ export default class Question extends Component {
 
     render() {
         let question;
+        let images;
         if(this.props.question["question_type"] === 'mcq')
         {
             question = <MCQ question={this.props.question}
@@ -22,13 +24,12 @@ export default class Question extends Component {
             />
         }
             return (
-           <React.Fragment>
-               { question }
-           </React.Fragment>
+                       <React.Fragment>
+                           <div className={'image-box'}>
+                               { images }
+                           </div>
+                           { question }
+                       </React.Fragment>
         );
     }
-}
-
-if (document.getElementById('question')) {
-    ReactDOM.render(<Question />, document.getElementById('question'));
 }

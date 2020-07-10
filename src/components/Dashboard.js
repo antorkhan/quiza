@@ -38,7 +38,6 @@ export default class Dashboard extends Component {
             },
             {
                 question_text: 'Jack has twelve dollars in his pocket on Monday, three dollars on Tuesday, ten dollars on Wednesday, eight dollars on Thursday, and two dollars on Friday. What is the average amount of money Jack has in his pocket during the week?',
-                options: ['10.00', '35.00', '8.00', '7.00'],
                 answer: '',
                 serial: 4,
                 question_type: 'blank'
@@ -47,6 +46,7 @@ export default class Dashboard extends Component {
         is_finished: true,
     };
     setAnswer = (answered_value) => {
+        console.log(answered_value);
         this.setState(state => {
             const list = state.questions.map(item => {
                 if (item.serial === this.state.current_question) {
@@ -81,33 +81,33 @@ export default class Dashboard extends Component {
 
     render() {
         return (
-            <div className={'container-fluid'}>
+            <div className={'container mt-5'}>
                 {(!this.state.is_finished) ? <ScoreBoard questions = {this.state.questions}/> :
-                    <Question question={this.state.questions[this.state.current_question]}
-                              question_index={this.state.current_question}
-                              setAnswer={this.setAnswer}/>}
-
-                <hr/>
-                <div className={'row'}>
-                    <div className={'col-2 '}>
-                        <button
-                            className={'btn ' + (this.state.current_question > 0 ? 'btn-primary' : 'btn-secondary disabled')}
-                            onClick={this.previousQuestion}> Previous
-                        </button>
+                    <div>
+                        <Question question={this.state.questions[this.state.current_question]}
+                                  question_index={this.state.current_question}
+                                  setAnswer={this.setAnswer}/>
+                        <hr/>
+                        <div className={'row'}>
+                            <div className={'col-2 '}>
+                                <button
+                                    className={'btn ' + (this.state.current_question > 0 ? 'btn-primary' : 'btn-secondary disabled')}
+                                    onClick={this.previousQuestion}> Previous
+                                </button>
+                            </div>
+                            <div className={'col-2 offset-8'}>
+                                <button
+                                    className={'btn ' + (this.state.current_question < this.state.total_question - 1 ? 'btn-primary' : 'btn-secondary disabled')}
+                                    onClick={this.nextQuestion}> Next
+                                </button>
+                            </div>
+                            <div className={'col-12 text-center'}>
+                                <button className={'btn btn-success'} onClick={this.finishTest}>Finish Test</button>
+                            </div>
+                        </div>
                     </div>
-                    <div className={'col-2 offset-8'}>
-                        <button
-                            className={'btn ' + (this.state.current_question < this.state.total_question - 1 ? 'btn-primary' : 'btn-secondary disabled')}
-                            onClick={this.nextQuestion}> Next
-                        </button>
-                    </div>
-                    <div className={'col-12 text-center'}>
-                        <button className={'btn btn-success'} onClick={this.finishTest}>Finish Test</button>
-                    </div>
-                </div>
+                }
             </div>
-
-
         );
     }
 }

@@ -2,27 +2,18 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 export default class Question extends Component {
-
     render() {
         return (
             <React.Fragment>
-                <div><h3>{this.props.question.question_text}</h3></div>
+                <div className={'font-weight-normal question-test'}>{this.props.question.question_text}</div>
                 <div>
-                    {this.props.question.options.map((value,index)=>{
-                        return <div key={index}>
-                            <h4><input type="radio"
-                                       value={value}
-                                       name="options"
-                                       checked={this.props.question.answer === value}
-                                       onChange={(event)=> this.props.setAnswer(value)}/> {value}</h4>
-                        </div>
-                    })}
+                    Your Answer Here: <input type="text"
+                                             value={this.props.question["answer"]}
+                                             onChange={(event)=> this.props.setAnswer(event.target.value)}
+                />
                 </div>
             </React.Fragment>
         );
     }
 }
 
-if (document.getElementById('question')) {
-    ReactDOM.render(<Question />, document.getElementById('question'));
-}
