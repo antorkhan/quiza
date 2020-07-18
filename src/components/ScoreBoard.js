@@ -30,8 +30,10 @@ export default class ScoreBoard extends Component {
     }
 
     render() {
-        return (
-            <React.Fragment>
+		let answer;
+		if(this.props && this.props.questions)
+		{
+			answer =             <React.Fragment>
                 <div className={'text-center'}><h3>Test Ended</h3></div>
                 <div>
                     {
@@ -48,6 +50,16 @@ export default class ScoreBoard extends Component {
                 </div>
                 <div className={'p-2 m-2'}><h4>Total score is <b>{this.state.total_score}</b></h4></div>
             </React.Fragment>
+		}
+		else
+		{
+			answer = <React.Fragment>
+						
+					 </React.Fragment>
+			
+		}
+        return (
+			answer
         );
     }
 }
